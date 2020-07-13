@@ -1,5 +1,5 @@
 /* eslint-disable import/order */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FiLogIn } from 'react-icons/fi';
 
@@ -17,6 +17,10 @@ import { navigateTo } from '~/services/history';
 
 export default function SignIn() {
   const { register, handleSubmit, errors } = useForm();
+
+  useEffect(() => {
+    document.title = 'TO-DO List - Login';
+  }, []);
 
   const onSubmit = data => {
     // TODO

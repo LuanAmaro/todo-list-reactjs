@@ -1,20 +1,23 @@
 /* eslint-disable import/order */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FiArrowLeft } from 'react-icons/fi';
 
-// Components
+// Styles
 import { Img, Register } from './styles';
 
+// Components
 import { Centered, Container, Dividir, Input, Button } from '~/components';
 
 // Logo
 import LogoTodoList from '~/assets/images/logo.png';
 
-// Styles
-
 export default function SignUp() {
   const { register, handleSubmit, errors } = useForm();
+
+  useEffect(() => {
+    document.title = 'TO-DO List - Registre-se';
+  }, []);
 
   const onSubmit = data => {
     // TODO

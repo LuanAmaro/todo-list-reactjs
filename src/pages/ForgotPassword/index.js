@@ -1,11 +1,11 @@
 /* eslint-disable import/order */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
-// Components
+// Styles
 import { Img, Register } from './styles';
 
-// Styles
+// Components
 import { Centered, Container, Dividir, Input, Button } from '~/components';
 
 // Logo
@@ -13,6 +13,10 @@ import LogoTodoList from '~/assets/images/logo.png';
 
 export default function ForgotPassword() {
   const { register, handleSubmit, errors } = useForm();
+
+  useEffect(() => {
+    document.title = 'TO-DO List - Recuperar senha';
+  }, []);
 
   const onSubmit = data => {
     // TODO
