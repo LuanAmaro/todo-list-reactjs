@@ -1,5 +1,5 @@
 /* eslint-disable import/order */
-import React, { useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FiLogOut, FiPlus, FiCheck, FiTrash2 } from 'react-icons/fi';
@@ -20,12 +20,31 @@ import {
 
 // Components
 import { Dividir, Input } from '~/components';
+import api from '~/services/api';
 
 export default function Dashboard() {
   document.title = 'TO-DO List - Dashboard';
   const { register, handleSubmit, errors } = useForm();
+  const [List, setList] = useState([]);
+
+  useEffect(() => {
+    const loadList = async () => {
+      const { data } = await api.get('/list');
+      setList(data);
+    };
+
+    loadList();
+  }, [List]);
 
   const onSubmit = useCallback(data => {
+    // TODO
+  }, []);
+
+  const handleChecked = useCallback(id => {
+    // TODO
+  }, []);
+
+  const handleRemove = useCallback(id => {
     // TODO
   }, []);
 
@@ -64,23 +83,32 @@ export default function Dashboard() {
               </IconAdd>
             </ButtonAddList>
           </ContainerAddList>
+          {List.map(items => (
+            <Card key={items.id}>
+              <button type="button">
+                <FiCheck
+                  size={22}
+                  color="#29CB00"
+                  onClick={() => handleChecked(items.id)}
+                />
+              </button>
+              <TextContent>
+                <p>{items.description}</p>
+              </TextContent>
+              <button type="button">
+                <FiTrash2
+                  size={22}
+                  color="#999999"
+                  onClick={() => handleRemove(items.id)}
+                />
+              </button>
+            </Card>
+          ))}
+
+          {/* Remove esse card quando for usar a API */}
           <Card>
             <button type="button">
               <FiCheck size={22} color="#29CB00" />
-            </button>
-            <TextContent>
-              <p>
-                Title one, Title one, Title one, Title one, Title one, Title one
-              </p>
-            </TextContent>
-            <button type="button">
-              <FiTrash2 size={22} color="#999999" />
-            </button>
-          </Card>
-
-          <Card>
-            <button type="button">
-              <FiCheck size={22} color="#707070" />
             </button>
             <TextContent>
               <p>
