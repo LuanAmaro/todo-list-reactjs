@@ -1,5 +1,5 @@
 /* eslint-disable import/order */
-import React, { useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { FiLogOut, FiPlus, FiCheck, FiTrash2 } from 'react-icons/fi';
@@ -21,25 +21,19 @@ import {
 // Components
 import { Dividir, Input } from '~/components';
 
-// Logo
-import LogoTodoList from '~/assets/images/logo.png';
-
 export default function Dashboard() {
+  document.title = 'TO-DO List - Dashboard';
   const { register, handleSubmit, errors } = useForm();
 
-  useEffect(() => {
-    document.title = 'TO-DO List - Dashboard';
-  }, []);
-
-  const onSubmit = data => {
+  const onSubmit = useCallback(data => {
     // TODO
-  };
+  }, []);
 
   return (
     <>
       <Container>
         <Header>
-          <Img src={LogoTodoList} alt="To-do List" />
+          <Img src={require('~/assets/images/logo.png')} alt="To-do List" />
           <Avatar>
             <div style={{ marginRight: 20, marginTop: 5 }}>
               <p>Username surname</p>

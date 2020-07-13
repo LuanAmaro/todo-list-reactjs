@@ -1,5 +1,5 @@
 /* eslint-disable import/order */
-import React, { useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { FiArrowLeft } from 'react-icons/fi';
 
@@ -9,24 +9,18 @@ import { Img, Register } from './styles';
 // Components
 import { Centered, Container, Dividir, Input, Button } from '~/components';
 
-// Logo
-import LogoTodoList from '~/assets/images/logo.png';
-
 export default function SignUp() {
+  document.title = 'TO-DO List - Registre-se';
   const { register, handleSubmit, errors } = useForm();
 
-  useEffect(() => {
-    document.title = 'TO-DO List - Registre-se';
-  }, []);
-
-  const onSubmit = data => {
+  const onSubmit = useCallback(data => {
     // TODO
-  };
+  }, []);
 
   return (
     <Centered>
       <Container w400>
-        <Img src={LogoTodoList} alt="To-do List" />
+        <Img src={require('~/assets/images/logo.png')} alt="To-do List" />
 
         <Dividir />
         <h2 style={{ color: '#FE9E0E' }}>Registre-se</h2>

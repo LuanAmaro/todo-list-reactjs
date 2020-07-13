@@ -1,5 +1,5 @@
 /* eslint-disable import/order */
-import React, { useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { FiLogIn } from 'react-icons/fi';
 
@@ -9,28 +9,23 @@ import { Img, ForgotPassword, Register } from './styles';
 // Components
 import { Centered, Container, Dividir, Input, Button } from '~/components';
 
-// Logo
-import LogoTodoList from '~/assets/images/logo.png';
-
 // services
 import { navigateTo } from '~/services/history';
 
 export default function SignIn() {
+  document.title = 'TO-DO List - Login';
+
   const { register, handleSubmit, errors } = useForm();
 
-  useEffect(() => {
-    document.title = 'TO-DO List - Login';
-  }, []);
-
-  const onSubmit = data => {
+  const onSubmit = useCallback(data => {
     // TODO
     navigateTo('/dashboard');
-  };
+  }, []);
 
   return (
     <Centered>
       <Container w400>
-        <Img src={LogoTodoList} alt="To-do List" />
+        <Img src={require('~/assets/images/logo.png')} alt="TO-DO List" />
 
         <Dividir mt35 mb27 />
 
