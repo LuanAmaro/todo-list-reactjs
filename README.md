@@ -63,4 +63,4 @@ $ yarn start
 👤 **Luan Amaro**
 
 * Github: [@LuanAmaro](https://github.com/LuanAmaro)
-* LinkedIn: [@luan-amaro-59638b1a0](https://www.linkedin.com/in/luan-amaro-59638b1a0/)
+* LinkedIn: [@luan-amaro-59638b1a0](https://www.linkedin.com/in/luan-amaro)
